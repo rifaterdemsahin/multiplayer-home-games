@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbie Game Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #ff1493; /* Deep pink */
+        --primary-light: rgba(255, 255, 255, 0.2);
+        --bg-gradient: linear-gradient(135deg, #ff69b4, #ffb6d9);
+        --card-bg: rgba(255, 255, 255, 0.15);
+        --border-color: rgba(255, 255, 255, 0.25);
+        --shadow-sm: 0 4px 6px rgba(255, 20, 147, 0.1);
+        --shadow-hover: 0 20px 25px -5px rgba(255, 20, 147, 0.2), 0 10px 10px -5px rgba(255, 20, 147, 0.1);
+    }
+
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: var(--bg-gradient);
+        background-attachment: fixed;
+        color: white;
+        line-height: 1.6;
+        min-height: 100vh;
+    }
+
+    /* Navigation Bar */
+    .top-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 105, 180, 0.2);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 14px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 4px rgba(255, 20, 147, 0.2);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 8px;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 30px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .nav-link.active {
+        background: white;
+        color: var(--primary);
+        box-shadow: 0 4px 14px rgba(255, 20, 147, 0.25);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 800;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: white;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 10px rgba(255, 20, 147, 0.3);
+    }
+
+    .subtitle {
+        text-align: center;
+        margin-bottom: 30px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+
+    .card {
+        background: var(--card-bg);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 24px;
+        border-radius: 18px;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        background: rgba(255, 255, 255, 0.22);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .card h2 {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: white;
+        text-shadow: 0 1px 4px rgba(255, 20, 147, 0.15);
+    }
+
+    .description {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+
+    .button {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        padding: 10px 20px;
+        border-radius: 12px;
+        background: white;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 10px rgba(255, 20, 147, 0.15);
+        transition: all 0.2s ease;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(255, 20, 147, 0.25);
+        background: #fff0f5;
+    }
+
+    /* Controllers and Platforms style for Barbie */
+    .controllers-section {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 14px;
+        margin-top: 14px;
+    }
+
+    .section-title {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .controller-tag {
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer {
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.85);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+
+<body>
+
+<nav class="top-navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">🎀 Barbie TV</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">📋 Dashboard</a>
+            <a href="index.html" class="nav-link">🏠 Home</a>
+            <a href="kids-3-9.html" class="nav-link">🧒 Kids 3-9</a>
+            <a href="barbie.html" class="nav-link active">🎀 Barbie TV</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <header>
+        <h1>Barbie TV Game Center</h1>
+        <p class="subtitle">Designed for TV mode • MacBook + Controller + Family Fun</p>
+    </header>
+
+    <div class="grid">
+
+        <div class="card">
+            <div>
+                <h2>👗 Dress-Up Games</h2>
+                <p class="description">Create outfits, hairstyles, and Barbie fashion looks on Numuki.</p>
+            </div>
+            <div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">🖱️ Mouse / Trackpad</span>
+                        <span class="controller-tag">🎮 Controller (Mapped)</span>
+                    </div>
+                </div>
+                <a class="button"
+                   href="https://www.numuki.com/games/barbie/"
+                   target="_blank">
+                   Play Game
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>💄 Makeover Games</h2>
+                <p class="description">Hair styling, makeup, and creative beauty challenges on Girlsgogames.</p>
+            </div>
+            <div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">🖱️ Mouse / Trackpad</span>
+                        <span class="controller-tag">🎮 Controller (Mapped)</span>
+                    </div>
+                </div>
+                <a class="button"
+                   href="https://www.girlsgogames.com/games/barbie"
+                   target="_blank">
+                   Play Game
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>🏰 Barbie Adventures</h2>
+                <p class="description">Official story-based games, animations, and interactive playground activities.</p>
+            </div>
+            <div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">🖱️ Mouse / Trackpad</span>
+                        <span class="controller-tag">🎮 Controller (Mapped)</span>
+                    </div>
+                </div>
+                <a class="button"
+                   href="https://play.barbie.com"
+                   target="_blank">
+                   Open Portal
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>🎨 Coloring Pages</h2>
+                <p class="description">Digital coloring pages featuring Barbie characters, pets, and dreamhouses.</p>
+            </div>
+            <div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">🖱️ Mouse / Trackpad</span>
+                        <span class="controller-tag">📱 Touchscreen Support</span>
+                    </div>
+                </div>
+                <a class="button"
+                   href="https://www.coloringpages101.com/barbie"
+                   target="_blank">
+                   Start Coloring
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>🎬 Barbie Videos</h2>
+                <p class="description">Watch official Barbie music videos, show clips, and vlogs on YouTube.</p>
+            </div>
+            <div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">🖱️ Mouse / Trackpad</span>
+                        <span class="controller-tag">📺 Remote Control App</span>
+                    </div>
+                </div>
+                <a class="button"
+                   href="https://www.youtube.com/@Barbie"
+                   target="_blank">
+                   Watch Videos
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>⭐ Favorites</h2>
+                <p class="description">Create and register your child's favorite custom Barbie games here.</p>
+            </div>
+            <div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">⌨️ Keyboard Input</span>
+                        <span class="controller-tag">🖱️ Mouse / Trackpad</span>
+                    </div>
+                </div>
+                <a class="button"
+                   href="#"
+                   onclick="alert('Add your favorite Barbie game URL here!')">
+                   Add Favorite
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        🎮 <strong>Tip:</strong> Connect an Xbox or PlayStation controller to your MacBook and use Steam's <em>Controller-to-Mouse Mode</em> or a mapping tool like Joystick Mapper for seamless TV/couch play!
+    </div>
+
+</div>
+
+</body>
+</html>
