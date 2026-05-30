@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbie Game Center</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", sans-serif;
+    background: linear-gradient(135deg,#ff69b4,#ffb6d9);
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: white;
+    color: #ff1493;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎀 Barbie TV Game Center 🎀</h1>
+    <p class="subtitle">
+        Designed for TV mode • MacBook + Controller + Family Fun
+    </p>
+</header>
+
+<div class="grid">
+
+    <div class="card">
+        <h2>👗 Dress-Up Games</h2>
+        <p>Create outfits, hairstyles, and Barbie fashion looks.</p>
+        <a class="button"
+           href="https://www.numuki.com/games/barbie/"
+           target="_blank">
+           Play
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>💄 Makeover Games</h2>
+        <p>Hair styling, makeup and beauty challenges.</p>
+        <a class="button"
+           href="https://www.girlsgogames.com/games/barbie"
+           target="_blank">
+           Play
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>🏰 Barbie Adventures</h2>
+        <p>Story-based games and interactive activities.</p>
+        <a class="button"
+           href="https://play.barbie.com"
+           target="_blank">
+           Open
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>🎨 Coloring Pages</h2>
+        <p>Color Barbie characters and scenes.</p>
+        <a class="button"
+           href="https://www.coloringpages101.com/barbie"
+           target="_blank">
+           Color
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>🎬 Barbie Videos</h2>
+        <p>Watch Barbie adventures and music videos.</p>
+        <a class="button"
+           href="https://www.youtube.com/@Barbie"
+           target="_blank">
+           Watch
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>⭐ Favorites</h2>
+        <p>Add your child's favorite game links here.</p>
+        <a class="button"
+           href="#"
+           onclick="alert('Add your favorite Barbie game URL here!')">
+           Add Game
+        </a>
+    </div>
+
+</div>
+
+<div class="footer">
+    🎮 Tip: Connect an Xbox controller to your MacBook and use Steam's controller-to-mouse mode for easy TV navigation.
+</div>
+
+</body>
+</html>
