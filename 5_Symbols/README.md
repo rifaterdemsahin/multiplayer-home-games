@@ -20,6 +20,7 @@ This folder contains the **core source code and implementation files**. Everythi
 |------|-------------|
 | `index.html` | Primary entry point of the Family Multiplayer Game Center |
 | `kids-3-9.html` | Curated list of multiplayer games for kids aged 3 to 9 |
+| `kids-9-12.html` | Curated list of multiplayer and mobile crossplay games for kids aged 9 to 12 |
 | `barbie.html` | Playful web game list and TV/controller mapping instructions |
 
 ## Code Standards

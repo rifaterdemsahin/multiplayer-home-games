@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Family Multiplayer Games</title>
+<title>Games for Kids Ages 9-12</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
     :root {
-        --primary: #2b6cb0;
-        --primary-dark: #1a365d;
-        --primary-light: #ebf8ff;
-        --bg-color: #f8fafc;
+        --primary: #6b46c1; /* Purple/Indigo for 9-12 pre-teens */
+        --primary-dark: #322659;
+        --primary-light: #faf5ff;
+        --bg-color: #f7fafc;
         --card-bg: #ffffff;
-        --text-color: #1e293b;
-        --text-muted: #64748b;
+        --text-color: #2d3748;
+        --text-muted: #718096;
         --border-color: rgba(226, 232, 240, 0.8);
         --shadow-sm: 0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
         --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
         --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-        --shadow-hover: 0 20px 25px -5px rgba(43, 108, 176, 0.1), 0 10px 10px -5px rgba(43, 108, 176, 0.04);
+        --shadow-hover: 0 20px 25px -5px rgba(107, 70, 193, 0.1), 0 10px 10px -5px rgba(107, 70, 193, 0.04);
     }
 
     body {
@@ -84,14 +84,14 @@
     }
 
     .nav-link:hover {
-        background: rgba(43, 108, 176, 0.08);
+        background: rgba(107, 70, 193, 0.08);
         color: var(--primary);
     }
 
     .nav-link.active {
         background: var(--primary);
         color: white;
-        box-shadow: 0 4px 14px rgba(43, 108, 176, 0.25);
+        box-shadow: 0 4px 14px rgba(107, 70, 193, 0.25);
     }
 
     .container {
@@ -113,12 +113,45 @@
 
     .subtitle {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         color: var(--text-muted);
         font-size: 1.1rem;
     }
 
-    .game-grid {
+    .recommended {
+        background: #fffdf5;
+        border-left: 5px solid #d69e2e;
+        padding: 24px;
+        margin-bottom: 35px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+        border-top: 1px solid rgba(214, 158, 46, 0.2);
+        border-right: 1px solid rgba(214, 158, 46, 0.2);
+        border-bottom: 1px solid rgba(214, 158, 46, 0.2);
+    }
+
+    .recommended h3 {
+        font-family: 'Outfit', sans-serif;
+        margin-top: 0;
+        margin-bottom: 12px;
+        color: #b7791f;
+        font-size: 1.2rem;
+    }
+
+    .recommended ol {
+        margin: 0;
+        padding-left: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 8px;
+    }
+
+    .recommended li {
+        font-weight: 600;
+        color: #4a5568;
+    }
+
+    .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 25px;
@@ -145,7 +178,7 @@
         left: 0;
         width: 100%;
         height: 4px;
-        background: linear-gradient(90deg, var(--primary), #4299e1);
+        background: linear-gradient(90deg, var(--primary), #805ad5);
         opacity: 0;
         transition: opacity 0.3s ease;
     }
@@ -153,7 +186,7 @@
     .card:hover {
         transform: translateY(-5px);
         box-shadow: var(--shadow-hover);
-        border-color: rgba(43, 108, 176, 0.15);
+        border-color: rgba(107, 70, 193, 0.15);
     }
 
     .card:hover::before {
@@ -172,15 +205,42 @@
     .card-meta {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
         margin-bottom: 12px;
     }
 
-    .rating {
+    .age {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #553c9a;
+        background: #faf5ff;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+
+    .easy {
         font-weight: 700;
         font-size: 0.85rem;
         color: #2f855a;
-        background: #e6fffa;
+        background: #f0fff4;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+    
+    .medium {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #b7791f;
+        background: #fffaf0;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+
+    .hard {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #c53030;
+        background: #fff5f5;
         padding: 4px 10px;
         border-radius: 20px;
     }
@@ -227,25 +287,24 @@
         gap: 4px;
     }
 
-    .platform-tag.xbox {
-        background: #ebf9eb;
-        color: #2e7d32;
-    }
-
-    .platform-tag.switch {
+    .platform-tag.roblox {
         background: #ffebee;
-        color: #c62828;
+        color: #d32f2f;
     }
 
-    .platform-tag.steam-deck {
-        background: #f0f4f8;
-        color: #1e293b;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+    .platform-tag.ipad {
+        background: #e1f5fe;
+        color: #0288d1;
     }
 
-    .platform-tag.shield {
-        background: #f1f8e9;
-        color: #558b2f;
+    .platform-tag.pc {
+        background: #eceff1;
+        color: #37474f;
+    }
+
+    .platform-tag.console {
+        background: #ede7f6;
+        color: #5e35b1;
     }
 
     /* Controllers style */
@@ -276,9 +335,9 @@
         <a href="index.html" class="nav-logo">🎮 Home Games</a>
         <div class="nav-links">
             <a href="../index.html" class="nav-link">📋 Dashboard</a>
-            <a href="index.html" class="nav-link active">🏠 Home</a>
+            <a href="index.html" class="nav-link">🏠 Home</a>
             <a href="kids-3-9.html" class="nav-link">🧒 Kids 3-9</a>
-            <a href="kids-9-12.html" class="nav-link">🧑 Kids 9-12</a>
+            <a href="kids-9-12.html" class="nav-link active">🧑 Kids 9-12</a>
             <a href="barbie.html" class="nav-link">🎀 Barbie TV</a>
         </div>
     </div>
@@ -286,33 +345,130 @@
 
 <div class="container">
 
-    <h1>Best Multiplayer Games to Play with Kids</h1>
-    <p class="subtitle">Curated list of fun, local and co-op games for a wonderful family game night</p>
+    <h1>Best Multiplayer Games for Ages 9–12</h1>
+    <p class="subtitle">Curated list of competitive and cooperative games supporting mobile crossplay, Roblox worlds, and iPad gaming.</p>
 
-    <div class="game-grid">
+    <div class="recommended">
+        <h3>⭐ Top Picks for Age 9-12</h3>
+        <ol>
+            <li>Roblox (BedWars & Adopt Me)</li>
+            <li>Brawl Stars (iPad & Mobile)</li>
+            <li>Among Us (Crossplay)</li>
+            <li>Minecraft (Survival Realms)</li>
+            <li>Fortnite (Lego & Creative)</li>
+        </ol>
+    </div>
+
+    <div class="grid">
 
         <div class="card">
             <div>
-                <h2>Minecraft</h2>
+                <h2>Roblox (BedWars / Arsenal)</h2>
                 <div class="card-meta">
-                    <span class="rating">Age: 7+</span>
+                    <span class="age">Ages 9-12</span>
+                    <span class="medium">Difficulty: Medium</span>
                 </div>
-                <p class="description">Creative building, survival, and sandbox adventure together.</p>
+                <p class="description">Massive multiplayer platform. Play competitive block protection (BedWars) or rapid action matches (Arsenal).</p>
             </div>
             <div>
                 <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
+                    <div class="section-title">🎮 Platforms</div>
                     <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag steam-deck">Steam Deck</span>
+                        <span class="platform-tag roblox">Roblox App</span>
+                        <span class="platform-tag ipad">iPad / iOS</span>
+                        <span class="platform-tag pc">PC / Mac</span>
+                        <span class="platform-tag console">Xbox</span>
                     </div>
                 </div>
                 <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">📱 Touchscreen Support</span>
+                        <span class="controller-tag">⌨️ Keyboard & Mouse</span>
+                        <span class="controller-tag">🎮 Gamepad (Xbox/PS)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>Brawl Stars</h2>
+                <div class="card-meta">
+                    <span class="age">Ages 9-12</span>
+                    <span class="medium">Difficulty: Medium</span>
+                </div>
+                <p class="description">Fast-paced 3v3 team shooter. Team up with friends on iPads to climb the trophies ladder.</p>
+            </div>
+            <div>
+                <div class="platforms-section">
+                    <div class="section-title">🎮 Platforms</div>
+                    <div class="tags-container">
+                        <span class="platform-tag ipad">iPad / iOS</span>
+                        <span class="platform-tag ipad">Android</span>
+                    </div>
+                </div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">📱 Dual-Stick Touch Controls</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>Among Us</h2>
+                <div class="card-meta">
+                    <span class="age">Ages 9-12</span>
+                    <span class="easy">Difficulty: Easy</span>
+                </div>
+                <p class="description">Party game of teamwork and betrayal. Find the Impostor before they sabotage the space mission.</p>
+            </div>
+            <div>
+                <div class="platforms-section">
+                    <div class="section-title">🎮 Platforms</div>
+                    <div class="tags-container">
+                        <span class="platform-tag ipad">iPad / iOS</span>
+                        <span class="platform-tag pc">PC / Mac</span>
+                        <span class="platform-tag console">Console (Switch/Xbox/PS)</span>
+                    </div>
+                </div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
+                    <div class="tags-container">
+                        <span class="controller-tag">📱 Touch Controls</span>
+                        <span class="controller-tag">⌨️ Keyboard / Gamepad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h2>Minecraft (Survival Mode)</h2>
+                <div class="card-meta">
+                    <span class="age">Ages 8-12</span>
+                    <span class="medium">Difficulty: Medium</span>
+                </div>
+                <p class="description">Survive the night, build massive block fortresses, and explore infinite realms together.</p>
+            </div>
+            <div>
+                <div class="platforms-section">
+                    <div class="section-title">🎮 Platforms</div>
+                    <div class="tags-container">
+                        <span class="platform-tag pc">PC / Mac (Java/Bedrock)</span>
+                        <span class="platform-tag ipad">iPad / Mobile</span>
+                        <span class="platform-tag console">Console (Switch/Xbox/PS)</span>
+                    </div>
+                </div>
+                <div class="controllers-section">
+                    <div class="section-title">🕹️ Required Controllers</div>
                     <div class="tags-container">
                         <span class="controller-tag">⌨️ Keyboard & Mouse</span>
                         <span class="controller-tag">🎮 Gamepad (Xbox/Switch)</span>
+                        <span class="controller-tag">📱 Touchscreen Support</span>
                     </div>
                 </div>
             </div>
@@ -320,156 +476,24 @@
 
         <div class="card">
             <div>
-                <h2>Mario Kart 8 Deluxe</h2>
+                <h2>Fortnite (Lego & Creative Mode)</h2>
                 <div class="card-meta">
-                    <span class="rating">Age: 5+</span>
+                    <span class="age">Ages 10-12</span>
+                    <span class="hard">Difficulty: Hard</span>
                 </div>
-                <p class="description">Fun family racing game with local split-screen multiplayer.</p>
+                <p class="description">Build villages in Lego Fortnite or battle friends in Custom Creative island lobbies.</p>
             </div>
             <div>
                 <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
+                    <div class="section-title">🎮 Platforms</div>
                     <div class="tags-container">
-                        <span class="platform-tag switch">Nintendo Switch</span>
+                        <span class="platform-tag pc">PC</span>
+                        <span class="platform-tag console">Console (Xbox/Switch/PS)</span>
+                        <span class="platform-tag ipad">GeForce NOW (iPad Cloud)</span>
                     </div>
                 </div>
                 <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
-                    <div class="tags-container">
-                        <span class="controller-tag">🎮 Joy-Con (Single/Pair)</span>
-                        <span class="controller-tag">🎮 Pro Controller</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div>
-                <h2>Overcooked! 2</h2>
-                <div class="card-meta">
-                    <span class="rating">Age: 7+</span>
-                </div>
-                <p class="description">Work together in a crazy kitchen under hilarious pressure.</p>
-            </div>
-            <div>
-                <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
-                    <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag steam-deck">Steam Deck</span>
-                    </div>
-                </div>
-                <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
-                    <div class="tags-container">
-                        <span class="controller-tag">🎮 Gamepad (Xbox/Switch)</span>
-                        <span class="controller-tag">⌨️ Keyboard (Supports Shared Play)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div>
-                <h2>Moving Out 2</h2>
-                <div class="card-meta">
-                    <span class="rating">Age: 7+</span>
-                </div>
-                <p class="description">Cooperative furniture-moving physics chaos.</p>
-            </div>
-            <div>
-                <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
-                    <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag steam-deck">Steam Deck</span>
-                    </div>
-                </div>
-                <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
-                    <div class="tags-container">
-                        <span class="controller-tag">🎮 Gamepad (Xbox/Switch)</span>
-                        <span class="controller-tag">⌨️ Keyboard</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div>
-                <h2>Lego Star Wars: The Skywalker Saga</h2>
-                <div class="card-meta">
-                    <span class="rating">Age: 6+</span>
-                </div>
-                <p class="description">Easy cooperative adventure with lots of humor and action.</p>
-            </div>
-            <div>
-                <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
-                    <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag steam-deck">Steam Deck</span>
-                    </div>
-                </div>
-                <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
-                    <div class="tags-container">
-                        <span class="controller-tag">🎮 Gamepad (Xbox/Switch)</span>
-                        <span class="controller-tag">⌨️ Keyboard & Mouse</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div>
-                <h2>Teenage Mutant Ninja Turtles: Shredder's Revenge</h2>
-                <div class="card-meta">
-                    <span class="rating">Age: 8+</span>
-                </div>
-                <p class="description">Classic arcade-style beat-em-up featuring local co-op up to 6 players.</p>
-            </div>
-            <div>
-                <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
-                    <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag steam-deck">Steam Deck</span>
-                    </div>
-                </div>
-                <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
-                    <div class="tags-container">
-                        <span class="controller-tag">🎮 Gamepad (Xbox/Switch)</span>
-                        <span class="controller-tag">⌨️ Keyboard</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div>
-                <h2>Rocket League</h2>
-                <div class="card-meta">
-                    <span class="rating">Age: 7+</span>
-                </div>
-                <p class="description">High-octane soccer with rocket-powered stunt cars.</p>
-            </div>
-            <div>
-                <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
-                    <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag shield">NVIDIA Shield</span>
-                    </div>
-                </div>
-                <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
+                    <div class="section-title">🕹️ Required Controllers</div>
                     <div class="tags-container">
                         <span class="controller-tag">🎮 Gamepad Recommended</span>
                         <span class="controller-tag">⌨️ Keyboard & Mouse</span>
@@ -480,53 +504,27 @@
 
         <div class="card">
             <div>
-                <h2>Disney Speedstorm</h2>
+                <h2>Fall Guys</h2>
                 <div class="card-meta">
-                    <span class="rating">Age: 6+</span>
+                    <span class="age">Ages 8-12</span>
+                    <span class="easy">Difficulty: Easy</span>
                 </div>
-                <p class="description">Hero-based action racing game with beloved Disney & Pixar characters.</p>
+                <p class="description">Wacky obstacle courses where 60 players stumble and compete to grab the crown.</p>
             </div>
             <div>
                 <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
+                    <div class="section-title">🎮 Platforms</div>
                     <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag steam-deck">Steam Deck</span>
+                        <span class="platform-tag pc">PC</span>
+                        <span class="platform-tag console">Console (Switch/Xbox/PS)</span>
+                        <span class="platform-tag ipad">Mobile (Europe/Sideloaded)</span>
                     </div>
                 </div>
                 <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
+                    <div class="section-title">🕹️ Required Controllers</div>
                     <div class="tags-container">
-                        <span class="controller-tag">🎮 Gamepad (Xbox/Switch)</span>
+                        <span class="controller-tag">🎮 Gamepad Recommended</span>
                         <span class="controller-tag">⌨️ Keyboard</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div>
-                <h2>Human: Fall Flat</h2>
-                <div class="card-meta">
-                    <span class="rating">Age: 8+</span>
-                </div>
-                <p class="description">Lighthearted physics puzzle platformer set in floating dreamscapes.</p>
-            </div>
-            <div>
-                <div class="platforms-section">
-                    <div class="section-title">🎮 Available Platforms</div>
-                    <div class="tags-container">
-                        <span class="platform-tag xbox">Xbox</span>
-                        <span class="platform-tag switch">Nintendo Switch</span>
-                        <span class="platform-tag steam-deck">Steam Deck</span>
-                    </div>
-                </div>
-                <div class="controllers-section">
-                    <div class="section-title">🕹️ Recommended Controllers</div>
-                    <div class="tags-container">
-                        <span class="controller-tag">🎮 Gamepad (Xbox/Switch)</span>
-                        <span class="controller-tag">⌨️ Keyboard & Mouse</span>
                     </div>
                 </div>
             </div>
